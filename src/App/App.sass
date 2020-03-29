@@ -1,0 +1,32 @@
+.window
+  width: 80%
+  max-width: 800px
+  overflow: hidden
+  overflow-y: auto
+  background: #333
+  color: #FFF
+  border-radius: .4em
+  box-shadow: 0 2em 4em rgba(#000, .6)
+
+  .content
+    overflow-y: auto
+
+  .frame
+    background: #EEE
+    padding: .8em
+    display: flex
+
+    .btn
+      height: 1em
+      width: 1em
+      border-radius: 50%
+      display: inline-block
+      background: #888
+      margin-right: 0.5em
+
+      &.btn-close
+        background: #FF605C
+      &.btn-minimize
+        background: #FFBD44
+      &.btn-fullscreen
+        background: #00CA4E
