@@ -10,30 +10,45 @@ class App extends React.Component {
     this.state = {
       snippets: snippets,
       index: 0,
-      completed: false,
+      fields: {},
     };
   }
 
-  handleComplete = () => {
+  handleComplete = (field, status) => {
+    const { fields } = this.state;
+    fields[field] = status;
     this.setState({
-      completed: true
-    })
+      fields: fields
+    }, () => {
+      
+      // hook on the completion event of different fields        
+      if (field === 'selector') {
+        this.setState({
+          darkEditor: status
+        })
+      }
+
+    });
   }
 
   render() {
+    const snippet = this.state.snippets[this.state.index];
+    const { fields } = this.state;
+    const listed = Object.values(fields).filter(value => value === true);
+    const completed = listed.length === Object.values(snippet.fields).length;
     return (
       <>
-        <div className={`window animated ${this.state.completed ? 'tada' : ''}`}>
+        <div className={`window animated ${completed ? 'tada' : ''}`}>
           <div className="frame">
             <span className="btn btn-close"></span>
             <span className="btn btn-minimize"></span>
             <span className="btn btn-fullscreen"></span>
           </div>
-          <div className="content">
+          <div className={`content ${this.state.darkEditor ? 'dark' : ''}`}>
             <Editor
-              snippet={this.state.snippets[this.state.index]}
+              snippet={snippet}
               onComplete={this.handleComplete}
-              locked={this.state.completed}/>
+              locked={completed}/>
           </div>
         </div>
       </>

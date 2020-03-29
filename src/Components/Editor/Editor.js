@@ -7,34 +7,36 @@ class Editor extends React.Component {
     super(props);
     this.state = {
       ...props.snippet,
-      code: parseCode(props.snippet, props.locked),
-      completed: []
+      code: parseCode(props.snippet, props.locked)
     };
+  }
+
+  isMobileDevice() {
+    return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
+  }
+
+  componentDidMount = () => {
+    document.querySelectorAll('input').forEach(input => {
+      input.size = input.value.length;
+      if (!this.isMobileDevice()) input.size -= 1;
+    })
   }
 
   handleInput = e => {
     const input = e.target;
-    input.size = input.value.length > 1 ? input.value.length - 1 : 1;
+    input.size = input.value.length > 1 ? input.value.length : 1;
+    if (!this.isMobileDevice()) input.size -= 1;
 
-    let { completed } = this.state;
+    // call parent with complete status
     const name = input.name;
     const field = this.state.fields[name];
-
-    if (input.value.toLowerCase() === field.expected.toLowerCase()) {
-      if (!completed.includes(input.name)) completed.push(name);
-    } else {
-      completed = completed.filter(f => f !== name);
-    }
+    let complete = field.caseSensitive ? input.value === field.expected : input.value.toLowerCase() === field.expected.toLowerCase();
 
     if (field.watch) {
       document.querySelector(field.watch.el).style = `${field.watch.prop}: ${input.value || field.default}`
     }
 
-    this.setState({ completed: completed });
-
-    if (completed.length === Object.keys(this.state.fields).length) {
-      this.props.onComplete();
-    }
+    this.props.onComplete(name, complete);
 
   }
 

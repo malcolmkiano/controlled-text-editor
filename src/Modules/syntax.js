@@ -28,7 +28,7 @@ export function parseCode(snippet, locked=false) {
     if (inputvals.length > 1) {
       const field = inputvals[1];
       const ref = snippet.fields[field];
-      const input = `<input name=${field} type="text" size="${ref.default.length - 1}" value="${ref.default}"/>`;
+      const input = `<input name=${field} type="text" value="${ref.default}"/>`;
       
       lineoutput = inputvals[0] + (locked ? ref.expected : input) + inputvals[2];
     }

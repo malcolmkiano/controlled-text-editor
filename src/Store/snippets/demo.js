@@ -27,7 +27,8 @@ export default {
   fields: {
     'selector': {
       default: 'selector',
-      expected: '.editor'
+      expected: '.editor',
+      caseSensitive: true
     },
 
     'background': {
