@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/controlled-text-editor/static/css/main.48a8fe8f.chunk.css",
-    "main.js": "/controlled-text-editor/static/js/main.ec70084d.chunk.js",
-    "main.js.map": "/controlled-text-editor/static/js/main.ec70084d.chunk.js.map",
+    "main.css": "/controlled-text-editor/static/css/main.d2448d4d.chunk.css",
+    "main.js": "/controlled-text-editor/static/js/main.ebf52cb2.chunk.js",
+    "main.js.map": "/controlled-text-editor/static/js/main.ebf52cb2.chunk.js.map",
     "runtime-main.js": "/controlled-text-editor/static/js/runtime-main.6fa8f408.js",
     "runtime-main.js.map": "/controlled-text-editor/static/js/runtime-main.6fa8f408.js.map",
     "static/js/2.e17571dd.chunk.js": "/controlled-text-editor/static/js/2.e17571dd.chunk.js",
     "static/js/2.e17571dd.chunk.js.map": "/controlled-text-editor/static/js/2.e17571dd.chunk.js.map",
     "index.html": "/controlled-text-editor/index.html",
-    "precache-manifest.bf5dc998f77bc1aead0a7128b3ffdf1c.js": "/controlled-text-editor/precache-manifest.bf5dc998f77bc1aead0a7128b3ffdf1c.js",
+    "precache-manifest.a1c6b5cc6a54586a83e0df5bf15da1ed.js": "/controlled-text-editor/precache-manifest.a1c6b5cc6a54586a83e0df5bf15da1ed.js",
     "service-worker.js": "/controlled-text-editor/service-worker.js",
-    "static/css/main.48a8fe8f.chunk.css.map": "/controlled-text-editor/static/css/main.48a8fe8f.chunk.css.map",
+    "static/css/main.d2448d4d.chunk.css.map": "/controlled-text-editor/static/css/main.d2448d4d.chunk.css.map",
     "static/js/2.e17571dd.chunk.js.LICENSE.txt": "/controlled-text-editor/static/js/2.e17571dd.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.6fa8f408.js",
     "static/js/2.e17571dd.chunk.js",
-    "static/css/main.48a8fe8f.chunk.css",
-    "static/js/main.ec70084d.chunk.js"
+    "static/css/main.d2448d4d.chunk.css",
+    "static/js/main.ebf52cb2.chunk.js"
   ]
 }
