@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/controlled-text-editor/static/css/main.542e27dc.chunk.css",
+    "main.css": "/controlled-text-editor/static/css/main.420adc0b.chunk.css",
     "main.js": "/controlled-text-editor/static/js/main.ec70084d.chunk.js",
     "main.js.map": "/controlled-text-editor/static/js/main.ec70084d.chunk.js.map",
     "runtime-main.js": "/controlled-text-editor/static/js/runtime-main.6fa8f408.js",
@@ -8,15 +8,15 @@
     "static/js/2.e17571dd.chunk.js": "/controlled-text-editor/static/js/2.e17571dd.chunk.js",
     "static/js/2.e17571dd.chunk.js.map": "/controlled-text-editor/static/js/2.e17571dd.chunk.js.map",
     "index.html": "/controlled-text-editor/index.html",
-    "precache-manifest.a96778d5289523e32d6ca6506706f69a.js": "/controlled-text-editor/precache-manifest.a96778d5289523e32d6ca6506706f69a.js",
+    "precache-manifest.5115383a730c2d8208f7dc9cad66cbde.js": "/controlled-text-editor/precache-manifest.5115383a730c2d8208f7dc9cad66cbde.js",
     "service-worker.js": "/controlled-text-editor/service-worker.js",
-    "static/css/main.542e27dc.chunk.css.map": "/controlled-text-editor/static/css/main.542e27dc.chunk.css.map",
+    "static/css/main.420adc0b.chunk.css.map": "/controlled-text-editor/static/css/main.420adc0b.chunk.css.map",
     "static/js/2.e17571dd.chunk.js.LICENSE.txt": "/controlled-text-editor/static/js/2.e17571dd.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.6fa8f408.js",
     "static/js/2.e17571dd.chunk.js",
-    "static/css/main.542e27dc.chunk.css",
+    "static/css/main.420adc0b.chunk.css",
     "static/js/main.ec70084d.chunk.js"
   ]
 }
