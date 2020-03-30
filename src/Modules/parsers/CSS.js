@@ -4,6 +4,7 @@ export default function CSS(lines) {
 
     // to hold the output for the current line
     let lineoutput = '';
+    let linetype = 'line';
 
     // highlight tag selectors
     const selectorlist = line.split(/\s{|{/);
@@ -14,6 +15,8 @@ export default function CSS(lines) {
           // multiple selectors in one rule?
           const selectors = set.split(/,\s|,/);
           selectors.forEach(group => {
+
+            linetype = 'line-selector';
 
             // direct child, child, or adjacent selectors?
             const portions = group.split(/(\s>\s|>)|(\s\+\s|\+)|(\s~\s|~)|(,\s|,)|(\s)/);
@@ -74,6 +77,9 @@ export default function CSS(lines) {
     // highlight properties & values
     const ruleparts = line.split(/;/);
     if (ruleparts.length > 1) {
+
+      linetype = 'line-rule';
+
       const definition = ruleparts[0].split(/\t|\s\s/)[1];
       const space = ruleparts[0].split(definition)[0];
 
@@ -96,6 +102,9 @@ export default function CSS(lines) {
     // highlight comments
     const comments = line.split(/\/\*/);
     if (comments.length > 1) {
+
+      if (linetype === 'line') linetype = 'line-comment';
+
       comments.forEach(comment => {
         if (comment.endsWith('*/')) {
           lineoutput += `<span class="comment">/*${comment.split(/\*\//)[0]}*/</span>`;
@@ -104,10 +113,16 @@ export default function CSS(lines) {
     }
 
     // closing rules
-    if (line.includes('}')) lineoutput += '}';
+    if (line.includes('}')){
+      if (linetype === 'line') linetype = 'line-closing';
+      lineoutput += '}';
+    }
 
     // send it out
-    output.push(lineoutput);
+    output.push({
+      content: lineoutput,
+      type: linetype
+    });
 
   });
 

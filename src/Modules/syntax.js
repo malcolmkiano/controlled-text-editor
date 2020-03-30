@@ -1,7 +1,7 @@
 // import the parsers
 import parseCSS from './parsers/CSS';
 
-export function parseCode(snippet, locked=false) {
+export function parseCode(snippet, locked=false, options={}) {
 
   // index all the parsers available
   const parsers = {
@@ -17,10 +17,15 @@ export function parseCode(snippet, locked=false) {
   // send to the appropriate parser
   let lines = parse(data); 
 
+  // add inputs, tabs, and wrappers
+  let linenum = 0;
   lines.forEach(line => {
 
+    linenum++;
+
     // hold each line's output
-    let lineoutput = line; 
+    let linetype = line.type;
+    let lineoutput = line.content;
 
     // find input fields in code (for controlled editing)
     // and create an input element for each
@@ -28,17 +33,20 @@ export function parseCode(snippet, locked=false) {
     if (inputvals.length > 1) {
       const field = inputvals[1];
       const ref = snippet.fields[field];
-      const input = `<input name=${field} type="text" value="${ref.default}"/>`;
+      const input = `<input name=${field} type="text" value="${ref.defaultValue}"/>`;
       
-      lineoutput = inputvals[0] + (locked ? ref.expected : input) + inputvals[2];
+      lineoutput = inputvals[0] + (locked ? ref.expectedValue : input) + inputvals[2];
     }
 
     // replace tab characters
-    if (lineoutput.length === 0) lineoutput = line ? line : '<pre></pre>';
-    lineoutput = lineoutput.split(/\s\s|\t/).join('<pre>\t</pre>');
+    if (lineoutput.length === 0){
+      linetype = 'line-blank';
+      lineoutput = '<pre></pre>';
+    }
+    lineoutput = lineoutput.replace(/\s\s|\t/g, '<pre>\t</pre>');
 
     // wrap the line in a div & add it to the main output stream
-    lineoutput = `<div class="line">${lineoutput}</div>`;
+    lineoutput = `<div data-number="${linenum}" class="${linetype}">${lineoutput}</div>`;
     output += lineoutput;
 
   });

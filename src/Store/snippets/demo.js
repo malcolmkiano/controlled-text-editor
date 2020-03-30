@@ -9,7 +9,7 @@ const code = `/* replace 'selector' with '.editor' */
   box-sizing: border-box;
 }
 
-a:hover, button:hover {
+button:hover {
   color: #FF0000;
 }
 
@@ -18,26 +18,27 @@ html, body, input[type=text] {
   background: !!!background!!!; /* change to '#29CA73' */
 }`;
 
+const fields = {
+  'selector': {
+    defaultValue: 'selector',
+    expectedValue: '.editor',
+    matchType: 'exact'
+  },
+
+  'background': {
+    defaultValue: '#F75F45',
+    expectedValue: '#29CA73',
+    watch: {
+      el: 'main',
+      prop: 'background'
+    },
+  }
+}
+
 
 // all other options
 export default {
   language: 'CSS',
   code,
-
-  fields: {
-    'selector': {
-      default: 'selector',
-      expected: '.editor',
-      caseSensitive: true
-    },
-
-    'background': {
-      default: '#F75F45',
-      expected: '#29CA73',
-      watch: {
-        el: 'main',
-        prop: 'background'
-      },
-    }
-  }
+  fields
 };

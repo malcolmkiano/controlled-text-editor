@@ -9,8 +9,19 @@
   ::selection
     background: rgba(#FFFFFF,.2)
 
-  .line
+  div[class^='line']
     white-space: nowrap
+
+    &::before
+      content: attr(data-number)
+      display: inline-block
+      text-align: right
+      margin-left: -.5em
+      width: 1em
+      margin-right: 1em
+      user-select: none
+      pointer-events: none
+      opacity: .2
 
   .comment
     color: #777777

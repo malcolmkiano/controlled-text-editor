@@ -25,13 +25,22 @@ class Editor extends React.Component {
   handleInput = e => {
     const input = e.target;
     input.size = input.value.length > 1 ? input.value.length : 1;
-    if (!this.isMobileDevice()) input.size -= 1;
+    if (!this.isMobileDevice()) input.size = input.size - 1 || 1;
 
     // call parent with complete status
     const name = input.name;
     const field = this.state.fields[name];
-    let complete = field.caseSensitive ? input.value === field.expected : input.value.toLowerCase() === field.expected.toLowerCase();
+    let complete = false;
+    
+    if (field.matchType === 'regex') {
 
+    } else if (field.matchType === 'exact') { 
+      complete = input.value === field.expectedValue;
+    } else {
+      complete = input.value.toLowerCase() === field.expectedValue.toLowerCase();
+    }
+
+    // live update if 'watched' field
     if (field.watch) {
       document.querySelector(field.watch.el).style = `${field.watch.prop}: ${input.value || field.default}`
     }
